@@ -17,4 +17,6 @@ router.put('/Deer/:id', Deer_controller.Deer_update_put);
 router.get('/Deer/:id', Deer_controller.Deer_detail);
 // GET request for list of all Deer items.
 router.get('/Deer', Deer_controller.Deer_list);
+
 module.exports = router;
+ 
