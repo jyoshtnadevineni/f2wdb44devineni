@@ -1,0 +1,23 @@
+extends layout
+block content
+  h1= title
+  if (toShow == null) 
+    h2 No instance to delete 
+  else    
+    - let Deerid = toShow._id
+    - let Deer_type = toShow.Deer_type
+    - let Deer_size = toShow.Deer_size
+    - let Deer_Name = toShow.Deer_Name
+    div
+    div.row
+    div(class='DeerAttr mr-3') Deer ID is:
+    div #{Deerid}
+    div.row
+    div(class='DeerAttr mr-3') Deer Type is:
+    div #{Deer_type}
+    div.row
+    div(class='DeerAttr mr-3') Deer Size is:
+    div #{Deer_size}
+    div.row
+    div(class='DeerAttr mr-3') Deer name is:
+    div #{Deer_Name}

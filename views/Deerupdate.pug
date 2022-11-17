@@ -1,0 +1,42 @@
+extends layout
+block content
+  h1= title
+  if (toShow == null) 
+    h2 No instance to delete 
+  else      
+    - let Deerid = toShow._id
+    - let Deer_type = toShow.Deer_type
+    - let Deer_Name = toShow.Deer_Name
+    - let Deer_size = toShow.Deer_size
+    div.row(class='mb-2')
+        div.mr-1 ID is
+        div #{Deerid}
+    - let actionid = "/resource/Deer/" + Deerid
+    form(id='DeerForm', action= actionid, method="PUT")
+        div.form-group
+            label.DeerAttr(for='Deer_type') Deer type
+            input#Deer_type(type='text', name='Deer_type', value= Deer_type )
+        div.form-group
+            label.DeerAttr(for='Deer_size') Deer size
+            input#Deer_size(type='number', name='Deer_size', value= Deer_size )
+        div.form-group
+            label.DeerAttr(for='Deer_Name') Deer Name
+            input#Deer_Name(type='text', name='Deer_Name', value= Deer_Name )
+        input(type="submit")
+    script.
+        document.forms['DeerForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+        method: 'PUT',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+        alert("Update succeded")
+        // TODO handle body
+        }).catch((error) => {
+        // TODO handle error
+        alert("Update failed " + error )
+        });
+        });
