@@ -4,7 +4,7 @@ render server link [https://f2wdb44devineni.onrender.com]
 
 ```
 class Deer{
-    String Deer_name;
+    String Deer_Name;
     var Deer_type;
     number Deer_Size;
 }
